@@ -7,15 +7,15 @@ import functions
 @app.route('/utils/infobar', methods=['GET'])
 def utils():
     if request.method == 'GET':
-        disk_usage = functions.getHardDiskUsage()
+        du_total, du_used, du_free = functions.getHardDiskUsage()
         return jsonify({
             'isRearCameraOn': False,
             'isFrontCameraOn': True,
             'isRearPlateRecoginitionOn': False,
             'isFrontPlateRecoginitionOn': True,
-            'diskUsage_total': disk_usage["total"],
-            'diskUsage_free': disk_usage["free"],
-            'diskUsage_used': disk_usage["used"]
+            'diskUsage_total': du_total,
+            'diskUsage_free': du_free,
+            'diskUsage_used': du_used
         }), 200
     else:
         return abort(404)
