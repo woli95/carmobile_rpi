@@ -20,6 +20,12 @@ def utils():
     else:
         return abort(404)
 
+@app.route('/utils/videos', methods=['GET'])
+def videos():
+    if request.method == 'GET':
+        return jsonify(functions.getSavedVideoFilenames()), 200
+    else:
+        return abort(404)
 
 @app.route('/', methods=['GET'])
 def x():
